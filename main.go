@@ -46,7 +46,6 @@ func main() {
 		log.Fatalln("output is not set")
 	}
 
-	fmt.Println("Hello!")
 
 	if isGenKeys {
 		public, private, err := rsa.GenKeys()
