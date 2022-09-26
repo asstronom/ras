@@ -1,4 +1,4 @@
-package ras
+package rsa
 
 import (
 	"math/big"
