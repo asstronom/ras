@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
@@ -45,7 +44,6 @@ func main() {
 	if output == "" {
 		log.Fatalln("output is not set")
 	}
-
 
 	if isGenKeys {
 		public, private, err := rsa.GenKeys()
