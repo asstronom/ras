@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"example.com/ras"
+	rsa "github.com/asstronom/rsa/rsa"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -46,7 +46,7 @@ func main() {
 	}
 
 	if isGenKeys {
-		public, private, err := ras.GenKeys()
+		public, private, err := rsa.GenKeys()
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -77,7 +77,7 @@ func main() {
 			if err != nil {
 				log.Fatalln("error opening file", err)
 			}
-			private := ras.PrivateKey{}
+			private := rsa.PrivateKey{}
 			err = bson.Unmarshal(bytes, &private)
 			if err != nil {
 				log.Fatalln("error unmarsaling private key", err)
@@ -91,7 +91,7 @@ func main() {
 			if err != nil {
 				log.Fatalln("error opening file", err)
 			}
-			public := ras.PublicKey{}
+			public := rsa.PublicKey{}
 			err = bson.Unmarshal(bytes, &public)
 			if err != nil {
 				log.Fatalln("error unmarsaling public key", err)

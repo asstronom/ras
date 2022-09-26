@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"example.com/sieve"
+	"github.com/asstronom/rsa/sieve"
 )
 
 func Eueler(p *big.Int, q *big.Int) *big.Int {
