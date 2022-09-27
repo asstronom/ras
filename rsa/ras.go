@@ -3,6 +3,7 @@ package rsa
 import (
 	"crypto/rand"
 	"fmt"
+	"log"
 	"math/big"
 
 	"github.com/asstronom/rsa/sieve"
@@ -41,6 +42,9 @@ func (k *PublicKey) Encrypt(text []byte) []byte {
 	n := big.Int{}
 	e.SetBytes(k.Exp)
 	n.SetBytes(k.N)
+	if n.Cmp(&m) == -1 {
+		log.Fatalln("m > n")
+	}
 	c.Exp(&m, &e, &n)
 	return c.Bytes()
 }
