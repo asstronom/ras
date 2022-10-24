@@ -8,6 +8,7 @@ import (
 	"github.com/asstronom/rsa/sieve"
 )
 
+//find fi
 func Eueler(p *big.Int, q *big.Int) *big.Int {
 	var p1, q1, euler big.Int
 	p1.Sub(p, big.NewInt(1))
@@ -16,6 +17,7 @@ func Eueler(p *big.Int, q *big.Int) *big.Int {
 	return &euler
 }
 
+//generates p and q
 func GenPQ() (*big.Int, *big.Int, error) {
 	p, err := rand.Prime(rand.Reader, 128)
 	if err != nil {
@@ -33,6 +35,7 @@ type PublicKey struct {
 	N   []byte `bson:"n"`
 }
 
+//encryption
 func (k *PublicKey) Encrypt(text []byte) []byte {
 	m := big.Int{}
 	m.SetBytes(text)
@@ -50,6 +53,7 @@ type PrivateKey struct {
 	N       []byte `bson:"n"`
 }
 
+//decryption
 func (k *PrivateKey) Decrypt(cipherText []byte) []byte {
 	t := big.Int{}
 	c := big.Int{}
@@ -71,6 +75,7 @@ func GenKeys() (PublicKey, PrivateKey, error) {
 	n.Mul(p, q)
 	fi := Eueler(p, q)
 	primes := sieve.SieveOfEratosthenes(65535)
+	//this loop searches for public exponent
 	e := big.Int{}
 	for i := len(primes) - 1; i >= 0; i-- {
 		curPrime := big.NewInt(int64(primes[i]))

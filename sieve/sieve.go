@@ -1,5 +1,7 @@
 package sieve
 
+
+//finds all primes that are less than n
 func SieveOfEratosthenes(n int) []int {
 	// Create a boolean array "prime[0..n]" and initialize
 	// all entries it as true. A value in prime[i] will
