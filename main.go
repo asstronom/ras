@@ -35,7 +35,7 @@ func BsonToFile(bytes []byte, filesuffix string) {
 
 func main() {
 	//flags
-	flag.BoolVar(&isGenKeys, "genKeys", false, "generates keys if true")
+	flag.BoolVar(&isGenKeys, "genkeys", false, "generates keys if true")
 	flag.BoolVar(&isDecrypt, "decrypt", false, "decrypts if true")
 	flag.StringVar(&input, "i", "", "path to input file")
 	flag.StringVar(&output, "o", "", "path to output file")
